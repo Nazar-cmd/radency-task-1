@@ -5,6 +5,6 @@
   margin: $page-margin;
   padding: $page-padding;
   height: 100vh ;
-  box-shadow: 0 0 5px 0 #000000;
+  box-shadow: $element_shadow;
   background-color: $secondary;
 }

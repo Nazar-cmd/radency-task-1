@@ -77,6 +77,31 @@ select {
     scroll-behavior: auto !important;
   }
 }
+.notes_table__container {
+  margin: 1rem 0;
+}
+.notes_table__container .notes_table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 5em;
+  /*   tr {
+       border: 0;
+
+       margin: 5px;
+
+       border: 2px red solid;
+       border-radius: 10px;
+     }
+
+     td {
+       padding: 5px;
+     }*/
+}
+.notes_table__container .notes_table__header {
+  border-radius: 10px;
+  background-color: #FFD299;
+}
+
 html {
   background: #FFD299;
 }
@@ -93,4 +118,4 @@ body {
   background-color: #CDECFD;
 }
 
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=main.scss.map */
