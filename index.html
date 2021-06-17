@@ -4,26 +4,39 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="scss/main.css">
+    <script src="components/CustomTable.js" ></script>
+    <script src="components/CustomColumn.js" ></script>
+    <script src="components/CustomRow.js" ></script>
+
+
+
 </head>
 <body>
 <main class="page__container">
     <section class="table__container">
-        <table class="table">
-            <tr class="table__header">
-                <th class="table__cell">Name</th>
-                <th class="table__cell">Created</th>
-                <th class="table__cell">Category</th>
-                <th class="table__cell">Content</th>
-                <th class="table__cell">Dates</th>
-                <th class="table__cell">
-                    <div class="table__cell_content table__header_content">
-                        <img src="assets/icons/archive-solid.svg" class="icon table__header_icon" alt="archive">
-                        <img src="assets/icons/trash-solid.svg" class="icon table__header_icon" alt="delete">
-                    </div>
-                </th>
-            </tr>
-
-        </table>
+        <custom-table>
+            <custom-column slot="columns" style="flex: 1" >
+                Name
+            </custom-column>
+            <custom-column slot="columns" style="flex: 1" >
+                Created
+            </custom-column>
+            <custom-column slot="columns" style="flex: 1" >
+                Category
+            </custom-column>
+            <custom-column slot="columns" style="flex: 1" >
+                Content
+            </custom-column>
+            <custom-column slot="columns" style="flex: 1" >
+                Dates
+            </custom-column>
+            <custom-column slot="columns" style="flex: 1" >
+                <div class="table__cell_content table__header_content">
+                    <img src="assets/icons/archive-solid.svg" class="icon table__header_icon" alt="archive">
+                    <img src="assets/icons/trash-solid.svg" class="icon table__header_icon" alt="delete">
+                </div>
+            </custom-column>
+        </custom-table>
     </section>
 </main>
 </body>
