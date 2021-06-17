@@ -1,0 +1,10 @@
+@mixin full-height-page-background($html-background: $primary){
+
+  html {
+    background: $html-background;
+  }
+
+  body {
+    height: 100%;
+  }
+}

@@ -77,5 +77,20 @@ select {
     scroll-behavior: auto !important;
   }
 }
+html {
+  background: #FFD299;
+}
+
+body {
+  height: 100%;
+}
+
+.page__container {
+  margin: 1rem;
+  padding: 1rem;
+  height: 100vh;
+  box-shadow: 0 0 5px 0 #000000;
+  background-color: #CDECFD;
+}
 
 /*# sourceMappingURL=main.css.map */
