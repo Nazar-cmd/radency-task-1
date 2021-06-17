@@ -1,10 +1,26 @@
-$primary: #FFD299;
-$secondary: #CDECFD;
+$primary_yellow: #ffbb73;
+$secondary_yellow: #FFD299;
 
+$primary_blue: #3687B3;
+$secondary_blue: #CDECFD;
 
-$page-margin: 1rem;
-$page-padding: 1rem;
-$notes_table-margins: 1rem 0;
+$primary_font-color: #000000;
+$secondary_font-color: #737373;
+
+$sm_margin: 0.5rem;
+$sm_padding: 0.5rem;
+
+$md_margin: 1rem;
+$md_padding: 1rem;
+
+$md_margin-vertical: $md_margin 0;
+$md_margin-horizontally: 0 $md_margin;
+
+$sm_margin-vertical: $sm_margin 0;
+$sm_margin-horizontally: 0 $sm_margin;
 
 $element_shadow: 0 0 5px 0 #000000;
-$element_border-radius: 10px;
+$element_border-radius: 5px;
+
+$sm_icon-size: 20px;
+$md_icon-size: 30px

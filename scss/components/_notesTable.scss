@@ -1,0 +1,77 @@
+.table__container {
+  margin: $md_margin-vertical;
+
+  .table {
+    width: 100%;
+
+    table-layout: fixed;
+    border-collapse:separate;
+    border-spacing: $md_margin-horizontally;
+
+    &__cell {
+      padding: 10px;
+
+      &:first-child {
+        @include round-left-side
+      }
+
+      &:last-child {
+        @include round-right-side
+      }
+
+      &_content {
+        display: flex;
+
+        .icon {
+          margin: 0 5px;
+        }
+      }
+
+      &_text {
+
+        white-space: nowrap; /* Запрещаем перенос строк */
+        overflow: hidden; /* Обрезаем все, что не помещается в область */
+        text-overflow: ellipsis;
+      }
+
+
+    }
+
+    &__header {
+      border-radius: $element_border-radius;
+      background-color: $primary_yellow;
+      font-weight: bold;
+
+      &_content{
+        justify-content: flex-end;
+      }
+
+      & .table__cell:not(:first-child) {
+        text-align: left;
+      }
+
+      &_icon {
+        @include draw-square($sm_icon-size)
+      }
+    }
+
+    &__row {
+      background-color: $secondary_yellow;
+      color: $secondary_font-color;
+
+      .table__cell_name {
+        align-items: center;
+        color: $primary_font-color;
+
+        .cell__text {
+          margin-left: $sm_margin;
+        }
+      }
+
+      &_icon {
+        @include draw-square($md_icon-size)
+
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-@mixin full-height-page-background($html-background: $primary){
+@mixin full-height-page-background($html-background: $secondary_yellow){
 
   html {
     background: $html-background;
@@ -7,4 +7,19 @@
   body {
     height: 100%;
   }
+}
+
+@mixin round-left-side($radius: $element_border-radius){
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin round-right-side($radius: $element_border-radius){
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+@mixin draw-square($side) {
+  width: $side;
+  height: $side;
 }
