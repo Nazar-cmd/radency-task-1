@@ -1,101 +1,87 @@
-.table__container {
-  margin: $md_margin-vertical;
-
-
-}
 
 .table {
-  width: 100%;
-
-  table-layout: fixed;
-  border-collapse:separate;
-  border-spacing: $md_margin-horizontally;
+  @extend %container-x-overflow;
 
   &__cell {
-    padding: 10px;
-
-    &:first-child {
-      @include round-left-side
-    }
+    min-width: $min_table-cell-size;
+    align-items: center;
+    padding: $md_padding;
+    display: flex;
+    flex: 1;
 
     &:last-child {
       @include round-right-side
+    }
+
+    &:first-child {
+      @include round-left-side
     }
 
     &_content {
       display: flex;
 
       .icon {
-        margin: 0 5px;
+        margin: 0 $sm_margin;
+        @include draw-square($sm_icon-size)
       }
     }
 
     &_text {
 
-      white-space: nowrap; /* Запрещаем перенос строк */
-      overflow: hidden; /* Обрезаем все, что не помещается в область */
+      white-space: nowrap;
+      overflow: hidden;
       text-overflow: ellipsis;
     }
 
 
   }
 
-  &__header {
-    border-radius: $element_border-radius;
-    background-color: $primary_yellow;
-    font-weight: bold;
+  &__row {
+    display: flex;
+    margin-bottom: $md_margin;
+    min-width: 100%;
 
-    &_content{
+
+    &_content {
+      color: $secondary_font-color;
+
+      .table__cell {
+        background-color: $secondary_yellow;
+      }
+
+      .table__cell_name {
+        align-items: center;
+        color: $primary_font-color;
+
+        .cell__text {
+          margin-left: $sm_margin;
+        }
+
+        .icon {
+          @include draw-square($md_icon-size)
+        }
+      }
+    }
+  }
+
+
+  &__header {
+    display: flex;
+    font-weight: bold;
+    border-radius: $element_border-radius;
+
+
+    &_content {
+      width: 100%;
       justify-content: flex-end;
     }
 
-    & .table__cell:not(:first-child) {
-      text-align: left;
-    }
+    .table__cell {
+      background-color: $primary_yellow;
 
-    &_icon {
-      @include draw-square($sm_icon-size)
-    }
-  }
-
-  &__row {
-    background-color: $secondary_yellow;
-    color: $secondary_font-color;
-
-    .table__cell_name {
-      align-items: center;
-      color: $primary_font-color;
-
-      .cell__text {
-        margin-left: $sm_margin;
+      &:first-of-type {
+        justify-content: center;
       }
     }
-
-    &_icon {
-      @include draw-square($md_icon-size)
-
-    }
-  }
-}
-
-
-
-
-
-.table {
-  width: 100%;
-
-  &__header {
-    display: flex;
-  }
-
-
-
-  &__cell {
-    flex: 1;
-  }
-
-  &__row {
-    display: flex;
   }
 }

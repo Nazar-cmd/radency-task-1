@@ -1,6 +1,6 @@
 const rowTemplate = document.createElement("template");
 rowTemplate.innerHTML = `
-        <div class="table__row">
+        <div class="table__row_content table__row">
                 <div class="table__cell">
                     <div class="table__cell_content table__cell_name">
                         <img src="assets/icons/lightbulb-regular.svg" class="icon table__row_icon" alt="idea">
@@ -28,27 +28,16 @@ rowTemplate.innerHTML = `
                 </div>
             </div>
         `
-/*rowTemplate.innerHTML = `
-<div class="table__row">
-                   <div class="table__cell">
-                       lo
-                   </div>
-                   <div class="table__cell">
-                       ipsu
-                   </div>
-               </div>
-        `*/
 
 class CustomRow extends HTMLElement{
     constructor() {
         super();
 
         const shadow = this.attachShadow({mode: "open"});
-
         // Apply external styles to the shadow dom
         const linkElem = document.createElement('link');
         linkElem.setAttribute('rel', 'stylesheet');
-        linkElem.setAttribute('href', 'scss/main.css');
+        linkElem.setAttribute('href', 'scss/tableWithSettings.css');
 
 
 // Attach the created element to the shadow dom

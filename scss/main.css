@@ -77,84 +77,6 @@ select {
     scroll-behavior: auto !important;
   }
 }
-.table__container {
-  margin: 1rem 0;
-}
-
-.table {
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: separate;
-  border-spacing: 0 1rem;
-}
-.table__cell {
-  padding: 10px;
-}
-.table__cell:first-child {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-.table__cell:last-child {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-.table__cell_content {
-  display: flex;
-}
-.table__cell_content .icon {
-  margin: 0 5px;
-}
-.table__cell_text {
-  white-space: nowrap;
-  /* Запрещаем перенос строк */
-  overflow: hidden;
-  /* Обрезаем все, что не помещается в область */
-  text-overflow: ellipsis;
-}
-.table__header {
-  border-radius: 5px;
-  background-color: #ffbb73;
-  font-weight: bold;
-}
-.table__header_content {
-  justify-content: flex-end;
-}
-.table__header .table__cell:not(:first-child) {
-  text-align: left;
-}
-.table__header_icon {
-  width: 20px;
-  height: 20px;
-}
-.table__row {
-  background-color: #FFD299;
-  color: #737373;
-}
-.table__row .table__cell_name {
-  align-items: center;
-  color: #000000;
-}
-.table__row .table__cell_name .cell__text {
-  margin-left: 0.5rem;
-}
-.table__row_icon {
-  width: 30px;
-  height: 30px;
-}
-
-.table {
-  width: 100%;
-}
-.table__header {
-  display: flex;
-}
-.table__cell {
-  flex: 1;
-}
-.table__row {
-  display: flex;
-}
-
 html {
   background: #FFD299;
 }
@@ -165,10 +87,13 @@ body {
 
 .page__container {
   margin: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   height: 100vh;
   box-shadow: 0 0 5px 0 #000000;
   background-color: #CDECFD;
+}
+.page__container .table__container {
+  margin: 1rem 0;
 }
 
 /*# sourceMappingURL=main.css.map */
