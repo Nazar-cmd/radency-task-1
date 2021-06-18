@@ -1,8 +1,15 @@
 const tableTemplate = document.createElement("template");
 tableTemplate.innerHTML = `
  <div class="table" id="table">
-    <div><slot name="header"/></div>
-    <div class="table__body" id="rows"></div>
+    <div>
+        <slot name="header"/>
+    </div>
+    <div class="table__body" id="rows">
+    <div>
+    <slot/>   
+</div>
+         
+    </div>
  </div>
 `
 

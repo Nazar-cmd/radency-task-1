@@ -40,11 +40,14 @@ class NotesTableRow extends HTMLElement{
         linkElem.setAttribute('href', 'scss/tableWithSettings.css');
 
 
+
 // Attach the created element to the shadow dom
         shadow.appendChild(linkElem);
 
 
         shadow.appendChild(rowTemplate.content.cloneNode(true))
+
+        console.log(this.getAttributeNames())
     }
 }
 
