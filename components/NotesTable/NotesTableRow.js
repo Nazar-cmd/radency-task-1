@@ -29,7 +29,7 @@ rowTemplate.innerHTML = `
             </div>
         `
 
-class CustomRow extends HTMLElement{
+class NotesTableRow extends HTMLElement{
     constructor() {
         super();
 
@@ -48,4 +48,4 @@ class CustomRow extends HTMLElement{
     }
 }
 
-window.customElements.define('custom-row', CustomRow)
+window.customElements.define('notes-table-row', NotesTableRow)

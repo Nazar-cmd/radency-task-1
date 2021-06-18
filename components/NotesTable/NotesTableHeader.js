@@ -25,7 +25,7 @@ columnTemplate.innerHTML = `
             </div>          
 `
 
-class CustomColumn extends HTMLElement{
+class NotesTableHeader extends HTMLElement{
     constructor() {
         super();
 
@@ -42,4 +42,4 @@ class CustomColumn extends HTMLElement{
         shadow.appendChild(columnTemplate.content.cloneNode(true))
     }
 }
-window.customElements.define('custom-column', CustomColumn, )
+window.customElements.define('notes-table-header', NotesTableHeader, )

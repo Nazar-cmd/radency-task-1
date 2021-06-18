@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="scss/main.css">
-    <script src="components/CustomTable.js" ></script>
-    <script src="components/CustomColumn.js" ></script>
-    <script src="components/CustomRow.js" ></script>
+    <script src="components/containers/CustomTable.js" ></script>
+    <script src="components/NotesTable/NotesTableHeader.js" ></script>
+    <script src="components/NotesTable/NotesTableRow.js" ></script>
+    <script type="module" src="js/store/store.js"></script>
 </head>
 <body>
 <main class="page__container">
     <section class="table__container">
         <custom-table>
-            <custom-column slot="header"></custom-column>
+            <notes-table-header slot="header"/>
         </custom-table>
     </section>
 </main>
+
 </body>
 </html>

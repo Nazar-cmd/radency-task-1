@@ -17,19 +17,17 @@ class CustomTable extends HTMLElement{
         const linkElem = document.createElement('link');
         linkElem.setAttribute('rel', 'stylesheet');
         linkElem.setAttribute('href', 'scss/tableWithSettings.css');
-
-
 // Attach the created element to the shadow dom
         shadow.appendChild(linkElem);
 
         //this.addCols()
-        this.addRows()
-        this.addRows()
+        /*this.addRows()
+        this.addRows()*/
     }
 
     addRows() {
         const asd = this.shadowRoot.getElementById("rows")
-        const row = document.createElement("custom-row")
+        const row = document.createElement("notes-table-row")
 
         asd.appendChild(row)
     }
