@@ -29,26 +29,24 @@ rowTemplate.innerHTML = `
             </div>
         `
 
-class NotesTableRow extends HTMLElement{
+export default class NotesTableRow extends HTMLElement{
     constructor() {
         super();
 
         const shadow = this.attachShadow({mode: "open"});
-        // Apply external styles to the shadow dom
+
         const linkElem = document.createElement('link');
         linkElem.setAttribute('rel', 'stylesheet');
         linkElem.setAttribute('href', 'scss/tableWithSettings.css');
-
-
-
-// Attach the created element to the shadow dom
         shadow.appendChild(linkElem);
 
 
-        shadow.appendChild(rowTemplate.content.cloneNode(true))
-
         console.log(this.getAttributeNames())
+
+
+
+
+        shadow.appendChild(rowTemplate.content.cloneNode(true))
     }
 }
 
-window.customElements.define('notes-table-row', NotesTableRow)

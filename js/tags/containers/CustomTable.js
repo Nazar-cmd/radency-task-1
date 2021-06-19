@@ -13,7 +13,7 @@ tableTemplate.innerHTML = `
  </div>
 `
 
-class CustomTable extends HTMLElement{
+export default class CustomTable extends HTMLElement{
     constructor() {
         super();
 
@@ -39,4 +39,3 @@ class CustomTable extends HTMLElement{
         asd.appendChild(row)
     }
 }
-window.customElements.define('custom-table', CustomTable)

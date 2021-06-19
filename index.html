@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="scss/main.css">
-    <script src="js/components/containers/CustomTable.js" ></script>
-    <script src="js/components/NotesTable/NotesTableHeader.js" ></script>
-    <script src="js/components/NotesTable/NotesTableRow.js" ></script>
-    <script type="module" src="js/store/store.js"></script>
+    <script type="module" src="js/tags" ></script>
+    <script type="module" src="js/main.js"></script>
 </head>
 <body>
 <main class="page__container">
@@ -15,18 +13,13 @@
         <custom-table id="notes-table" >
             <notes-table-header slot="header"></notes-table-header>
 
-            <notes-table-row name="123"></notes-table-row>
+            <div id="notes-table-rows">
+
+            </div>
         </custom-table>
     </section>
 </main>
-<script>
-    const customTable = document.getElementById("notes-table")
-    let notesTableRow = document.createElement("notes-table-row")
-    notesTableRow.setAttribute("kar", "123123123")
 
-
-    customTable.appendChild(notesTableRow)
-    </script>
 
 </body>
 </html>
