@@ -20,6 +20,8 @@ export default {
 
         state.notes[payload.index].archived = !archived
 
+        console.log(state)
+
         return state
     },
     deleteAllNotes(state, payload) {

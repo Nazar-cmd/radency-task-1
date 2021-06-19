@@ -13,13 +13,15 @@ export default class NotesTableList extends Component {
     render() {
         let self = this;
 
+        console.log("render123")
+
         if(store.state.notes.length === 0) {
             self.element.innerHTML = `<p style="text-align: center">Table is empty</p>`;
             return;
         }
 
         self.element.innerHTML = `
-        ${store.state.notes.map((note) => {
+        ${store.state.notes.map((note, index) => {
             
             let notesTableRow = document.createElement("notes-table-row")
             
@@ -33,6 +35,7 @@ export default class NotesTableList extends Component {
                 notesTableRow.setAttribute(key, value)
             }
 
+        notesTableRow.setAttribute("mapIndex", index.toString())
             
             return notesTableRow.outerHTML
         }).join('')}

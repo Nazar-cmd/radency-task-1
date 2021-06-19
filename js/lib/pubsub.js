@@ -8,7 +8,10 @@ export default class PubSub {
         let self = this;
 
         if(!self.events.hasOwnProperty(event)) {
+            console.log("hasnt own property")
             self.events[event] = [];
+
+            //console.log(self.events)
         }
 
         return self.events[event].push(callback);
@@ -17,6 +20,8 @@ export default class PubSub {
     publish(event, data = {}) {
 
         let self = this;
+
+        console.log(self.events)
 
         if(!self.events.hasOwnProperty(event)) {
             return [];

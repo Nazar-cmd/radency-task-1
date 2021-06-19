@@ -1,5 +1,6 @@
 const columnTemplate = document.createElement("template");
 columnTemplate.innerHTML = `
+
   <div class="table__header table__row" id="cols">
                 <div class="table__cell">
                     Name

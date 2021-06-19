@@ -37,10 +37,10 @@ export default  {
             archived: false
         },
         {
-            name: "Shopping list",
-            created:  "April 20, 2021",
-            category: "Task",
-            content: "Tomatoes, bread",
+            name: "Redux idea",
+            created:  "April 21, 2021",
+            category: "Random Thought",
+            content: "To create global state management in project",
             archived: false
         },
         {
@@ -51,10 +51,10 @@ export default  {
             archived: false
         },
         {
-            name: "Shopping list",
-            created:  "April 20, 2021",
-            category: "Task",
-            content: "Tomatoes, bread",
+            name: "Margaret Thatcher",
+            created:  "April 28, 2021",
+            category: "Quote",
+            content: "I love argument. I love debate. I don't expect anyone just to sit there and agree with me - that's not their job.",
             archived: false
         },
     ]

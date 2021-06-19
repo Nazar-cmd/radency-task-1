@@ -1,6 +1,8 @@
 
 .table {
-  @extend %container-x-overflow;
+  //@extend %container-x-overflow;
+  //overflow: visible;
+  max-height: 500px;
 
   &__cell {
     min-width: $min_table-cell-size;
@@ -32,21 +34,27 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
-
   }
 
   &__row {
     display: flex;
     margin-bottom: $md_margin;
     min-width: 100%;
+    //filter: grayscale(100%);
 
+    &.archived {
+
+      .table__cell {
+        background-color: $inactive-color;
+      }
+    }
 
     &_content {
       color: $secondary_font-color;
 
       .table__cell {
         background-color: $secondary_yellow;
+
       }
 
       .table__cell_name {
@@ -69,7 +77,15 @@
     display: flex;
     font-weight: bold;
     border-radius: $element_border-radius;
-
+    overflow: auto;
+    /*position: sticky;
+    position: -webkit-sticky;
+    top: 0; !* required *!
+*/
+    &_container {
+      position: sticky;
+      top: 0;
+    }
 
     &_content {
       width: 100%;
