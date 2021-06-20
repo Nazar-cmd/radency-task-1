@@ -1,13 +1,11 @@
-
 .table {
   @extend %container-x-overflow;
-  max-height: $max_table-height;
+  height: $table-height;
+  max-height: 100%;
   padding: $sm_padding-horizontally;
 
-  &__header_container {
-    position: sticky;
-    top: 0;
-    z-index: 1;
+  &__body {
+
   }
 
   &__cell {
@@ -45,9 +43,8 @@
   &__row {
     position: relative;
     display: flex;
-    margin-bottom: $md_margin;
+    margin-top: $md_margin;
     min-width: 100%;
-    //filter: grayscale(100%);
 
     &.archived {
 
@@ -79,11 +76,16 @@
     }
   }
 
+  &__header_container {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 
   &__header {
-    display: flex;
     font-weight: bold;
     border-radius: $element_border-radius;
+    margin-top: 0;
 
     &_content {
       width: 100%;

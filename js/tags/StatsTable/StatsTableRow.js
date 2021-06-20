@@ -1,4 +1,3 @@
-import store from "../../store/index.js"
 import { getCategoryIconPath } from "../utils.js";
 
 export default class StatsTableRow extends HTMLElement{
@@ -10,11 +9,11 @@ export default class StatsTableRow extends HTMLElement{
         const archivedQuantity = this.getAttribute("archivedQuantity");
 
 
-        const categoryIconPath = getCategoryIconPath(category);
-
         if ([activeQuantity, archivedQuantity, category].includes(null)) {
             return undefined
         }
+
+        const categoryIconPath = getCategoryIconPath(category);
 
         const rowTemplate = document.createElement("template");
         rowTemplate.innerHTML = `
@@ -42,8 +41,6 @@ export default class StatsTableRow extends HTMLElement{
         shadow.appendChild(linkElem);
 
         shadow.appendChild(rowTemplate.content.cloneNode(true))
-
-        const icon_archive = shadow.querySelector(".icon_archive")
 
     }
 }

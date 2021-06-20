@@ -1,7 +1,7 @@
 import Component from "../lib/component.js";
 import store from "../store"
 
-export default class StatsTableList extends Component {
+export default class NotesTableList extends Component {
 
     constructor() {
         super({

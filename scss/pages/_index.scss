@@ -12,6 +12,6 @@ body {
   background-color: $secondary_blue;
 
   .table__container {
-    margin: $md_margin-vertical;
+    margin: $md_margin-vertical $lg_margin;
   }
 }
