@@ -1,5 +1,5 @@
-const columnTemplate = document.createElement("template");
-columnTemplate.innerHTML = `
+const notesTableTemplate = document.createElement("template");
+notesTableTemplate.innerHTML = `
 
   <div class="table__header table__row" id="cols">
                 <div class="table__cell">
@@ -40,6 +40,6 @@ export default class NotesTableHeader extends HTMLElement{
 // Attach the created element to the shadow dom
         shadow.appendChild(linkElem);
 
-        shadow.appendChild(columnTemplate.content.cloneNode(true))
+        shadow.appendChild(notesTableTemplate.content.cloneNode(true))
     }
 }

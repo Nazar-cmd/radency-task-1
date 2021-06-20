@@ -41,11 +41,7 @@ export default class Store {
 
                 console.log(`stateChange: ${key}: ${value}`);
 
-                //console.log(self.events)
-
                 self.events.publish('stateChange', self.state);
-
-                //console.log(self.events)
 
                 if(self.status !== 'mutation') {
                     console.warn(`You should use a mutation to set ${key}`);

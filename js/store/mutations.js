@@ -16,16 +16,14 @@ export default {
         return state;
     },
     archiveNote(state, payload) {
-        const archived = state.notes[payload.index].archived
-
-        state.notes[payload.index].archived = !archived
-
-        console.log(state)
+        const copy = [...state.notes]
+        const isArchived = copy[payload.index].archived
+        copy[payload.index].archived = !isArchived;
 
         return state
     },
     deleteAllNotes(state, payload) {
-        state.notes = {}
+        state.notes = []
 
         return state
     },

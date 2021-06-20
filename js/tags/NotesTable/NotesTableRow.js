@@ -1,11 +1,5 @@
-import store from "../../store/index.js"
-
-const nameIconsPath = {
-    task: "assets/icons/shopping-cart-solid.svg",
-    random_thought: "assets/icons/head-side-virus-solid.svg",
-    idea: "assets/icons/lightbulb-regular.svg",
-    quote: "assets/icons/quote-right-solid.svg",
-}
+import store from "../../store"
+import { getCategoryIconPath } from "../utils.js";
 
 
 export default class NotesTableRow extends HTMLElement{
@@ -26,15 +20,16 @@ export default class NotesTableRow extends HTMLElement{
         const dateRegex = new RegExp('\\d{1,4}([.\\-/])\\d{1,2}([.\\-/])\\d{1,4}', "g");
         const dates = content.match(dateRegex) || "";
 
-        const nameIconPath = nameIconsPath[category.replace(" ", "_").toLowerCase()];
+        const categoryIconPath = getCategoryIconPath(category);
         const archivedClassName = archived === "true" ? "archived": "";
+
 
         const rowTemplate = document.createElement("template");
         rowTemplate.innerHTML = `
         <div class="table__row_content table__row ${archivedClassName}">
                 <div class="table__cell">
                     <div class="table__cell_content table__cell_name">
-                        <img src=${nameIconPath} class="icon table__row_icon" alt="idea">
+                        <img src=${categoryIconPath} class="icon table__row_icon" alt="idea">
                         <p class="table__cell_text">${name}</p>
                     </div>
                 </div>
@@ -60,9 +55,7 @@ export default class NotesTableRow extends HTMLElement{
             </div>
         `
 
-
         const shadow = this.attachShadow({mode: "open"});
-
 
 
         const linkElem = document.createElement('link');
@@ -72,12 +65,16 @@ export default class NotesTableRow extends HTMLElement{
 
         shadow.appendChild(rowTemplate.content.cloneNode(true))
 
-        const icon_archive = shadow.querySelector(".icon_archive")
 
+        const icon_archive = shadow.querySelector(".icon_archive")
         icon_archive.addEventListener("click", ()=>{
             store.dispatch("archiveNote", {index: mapIndex})
         })
 
+        const icon_delete = shadow.querySelector(".icon_delete")
+        icon_delete.addEventListener("click", ()=>{
+            store.dispatch("deleteNote", {index: mapIndex})
+        })
     }
 }
 
