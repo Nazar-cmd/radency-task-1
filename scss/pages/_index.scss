@@ -1,15 +1,19 @@
 @include full-height-page-background;
 
 body {
-  overflow: hidden;
+  padding: $md_padding;
 }
 
 .page__container {
-  margin: $md_margin;
   padding: $md_padding;
   height: 100% ;
   box-shadow: $element_shadow;
   background-color: $secondary_blue;
+
+  .error {
+    text-align: center;
+    color: red;
+  }
 
   .table__container {
     margin: $md_margin-vertical $lg_margin;

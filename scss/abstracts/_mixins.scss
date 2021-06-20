@@ -1,11 +1,11 @@
 @mixin full-height-page-background($html-background: $secondary_yellow){
 
   html {
-    background: $html-background;
     height: 100%;
   }
 
   body {
+    background: $html-background;
     height: 100%;
   }
 }

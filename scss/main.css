@@ -78,24 +78,27 @@ select {
   }
 }
 html {
+  height: 100%;
+}
+
+body {
   background: #FFD299;
   height: 100%;
 }
 
 body {
-  height: 100%;
-}
-
-body {
-  overflow: hidden;
+  padding: 0.75rem;
 }
 
 .page__container {
-  margin: 1rem;
   padding: 0.75rem;
   height: 100%;
   box-shadow: 0 0 5px 0 #000000;
   background-color: #CDECFD;
+}
+.page__container .error {
+  text-align: center;
+  color: red;
 }
 .page__container .table__container {
   margin: 1rem 0 2.5rem;
