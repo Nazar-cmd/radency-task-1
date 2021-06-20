@@ -8,8 +8,6 @@ export default class StatsTableList extends Component {
             store,
             element: document.querySelector('#notes-table-rows')
         });
-
-        console.log(store)
     }
 
     render() {
@@ -20,11 +18,6 @@ export default class StatsTableList extends Component {
             return;
         }
 
-        /*self.element.addEventListener("click", ()=>{
-            store.dispatch('archiveNote', {index:0})
-        })*/
-
-        //store.state.notes
         self.element.innerHTML = `
         ${store.state.notes.map((note, index) => {
 

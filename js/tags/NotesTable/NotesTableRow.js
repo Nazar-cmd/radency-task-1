@@ -29,7 +29,7 @@ export default class NotesTableRow extends HTMLElement{
         <div class="table__row_content table__row ${archivedClassName}">
                 <div class="table__cell">
                     <div class="table__cell_content table__cell_name">
-                        <img src=${categoryIconPath} class="icon table__row_icon" alt="idea">
+                        <img src=${categoryIconPath} class="icon table__row_icon" alt="category_icon">
                         <p class="table__cell_text">${name}</p>
                     </div>
                 </div>
@@ -56,7 +56,6 @@ export default class NotesTableRow extends HTMLElement{
         `
 
         const shadow = this.attachShadow({mode: "open"});
-
 
         const linkElem = document.createElement('link');
         linkElem.setAttribute('rel', 'stylesheet');
