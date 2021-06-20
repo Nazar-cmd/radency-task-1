@@ -1,7 +1,7 @@
 const tableTemplate = document.createElement("template");
 tableTemplate.innerHTML = `
- <div class="table" id="table">
-    <div>
+ <div class="table">
+    <div class="table__header_container">
         <slot name="header"/>
     </div>
     <div class="table__body" id="rows">
@@ -21,8 +21,7 @@ export default class CustomTable extends HTMLElement{
         const linkElem = document.createElement('link');
         linkElem.setAttribute('rel', 'stylesheet');
         linkElem.setAttribute('href', 'scss/tableWithSettings.css');
-
+// Attach the created element to the shadow dom
         shadow.appendChild(linkElem);
-
     }
 }

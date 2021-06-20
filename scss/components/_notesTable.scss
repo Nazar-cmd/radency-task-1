@@ -1,8 +1,14 @@
 
 .table {
-  //@extend %container-x-overflow;
-  //overflow: visible;
-  max-height: 500px;
+  @extend %container-x-overflow;
+  max-height: $max_table-height;
+  padding: $sm_padding-horizontally;
+
+  &__header_container {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 
   &__cell {
     min-width: $min_table-cell-size;
@@ -37,6 +43,7 @@
   }
 
   &__row {
+    position: relative;
     display: flex;
     margin-bottom: $md_margin;
     min-width: 100%;
@@ -77,15 +84,6 @@
     display: flex;
     font-weight: bold;
     border-radius: $element_border-radius;
-    overflow: auto;
-    /*position: sticky;
-    position: -webkit-sticky;
-    top: 0; !* required *!
-*/
-    &_container {
-      position: sticky;
-      top: 0;
-    }
 
     &_content {
       width: 100%;

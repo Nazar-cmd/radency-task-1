@@ -12,14 +12,17 @@ $secondary_font-color: #737373;
 $sm_margin: 0.5rem;
 $md_margin: 1rem;
 
-$sm_padding: 0.5rem;
-$md_padding: 0.75rem;
-
 $md_margin-vertical: $md_margin 0;
 $md_margin-horizontally: 0 $md_margin;
 
 $sm_margin-vertical: $sm_margin 0;
 $sm_margin-horizontally: 0 $sm_margin;
+
+
+$sm_padding: 0.5rem;
+$md_padding: 0.75rem;
+
+$sm_padding-horizontally: 0 $sm_padding;
 
 $element_shadow: 0 0 5px 0 #000000;
 
@@ -29,3 +32,4 @@ $sm_icon-size: 20px;
 $md_icon-size: 35px;
 
 $min_table-cell-size: 100px;
+$max_table-height: 360px

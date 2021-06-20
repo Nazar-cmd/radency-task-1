@@ -1,10 +1,13 @@
 @include full-height-page-background;
 
+body {
+  overflow: hidden;
+}
 
 .page__container {
   margin: $md_margin;
   padding: $md_padding;
-  height: 100vh ;
+  height: 100% ;
   box-shadow: $element_shadow;
   background-color: $secondary_blue;
 
