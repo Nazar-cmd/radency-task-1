@@ -29,3 +29,14 @@
   max-width: 100%;
   overflow-x: auto;
 }
+
+%center-horizontally-container-elements {
+  display: flex;
+  justify-content: center;
+}
+
+
+%center-container-elements {
+  @extend %center-horizontally-container-elements;
+  align-items: center;
+}

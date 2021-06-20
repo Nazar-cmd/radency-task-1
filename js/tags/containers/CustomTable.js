@@ -20,7 +20,7 @@ export default class CustomTable extends HTMLElement{
 
         const linkElem = document.createElement('link');
         linkElem.setAttribute('rel', 'stylesheet');
-        linkElem.setAttribute('href', 'scss/tableWithSettings.css');
+        linkElem.setAttribute('href', 'scss/components/customTable.css');
 // Attach the created element to the shadow dom
         shadow.appendChild(linkElem);
     }

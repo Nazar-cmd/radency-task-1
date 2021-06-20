@@ -21,7 +21,7 @@ export default class StatsTableHeader extends HTMLElement{
         // Apply external styles to the shadow dom
         const linkElem = document.createElement('link');
         linkElem.setAttribute('rel', 'stylesheet');
-        linkElem.setAttribute('href', 'scss/tableWithSettings.css');
+        linkElem.setAttribute('href', 'scss/components/customTable.css');
 
 
 // Attach the created element to the shadow dom

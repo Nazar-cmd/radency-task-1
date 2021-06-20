@@ -1,0 +1,27 @@
+@import "../settings-main";
+
+.add_note {
+
+  &__container {
+    margin: $md_margin;
+    @extend %center-horizontally-container-elements;
+  }
+
+  &__button {
+    width: $lg_button-size;
+    border-radius: $element_border-radius;
+    background-color: $primary_yellow;
+    border: $element_border;
+    transition: all 0.25s ease-in-out;
+
+    &:active {
+      background-color: $secondary_yellow;
+      border-color: $active_border-color;
+    }
+
+    &_text {
+      font-weight: bold;
+    }
+  }
+}
+

@@ -4,10 +4,12 @@ $secondary_yellow: #FFD299;
 $primary_blue: #3687B3;
 $secondary_blue: #CDECFD;
 
-$inactive-color: #c4c4c4;
-
 $primary_font-color: #000000;
 $secondary_font-color: #737373;
+
+$inactive-color: #d0c9c9;
+$inactive_border-color: #cbb4b4;
+$active_border-color: #b5a3a3;
 
 $sm_margin: 0.5rem;
 $md_margin: 1rem;
@@ -26,11 +28,14 @@ $md_padding: 0.75rem;
 $sm_padding-horizontally: 0 $sm_padding;
 
 $element_shadow: 0 0 5px 0 #000000;
+$element_border: 2px solid $inactive_border-color;
 
 $element_border-radius: 5px;
 
 $sm_icon-size: 20px;
 $md_icon-size: 35px;
+
+$lg_button-size: 250px;
 
 $min_table-cell-size: 100px;
 $table-height: 350px

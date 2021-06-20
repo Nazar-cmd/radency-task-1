@@ -59,7 +59,7 @@ export default class NotesTableRow extends HTMLElement{
 
         const linkElem = document.createElement('link');
         linkElem.setAttribute('rel', 'stylesheet');
-        linkElem.setAttribute('href', 'scss/tableWithSettings.css');
+        linkElem.setAttribute('href', 'scss/components/customTable.css');
         shadow.appendChild(linkElem);
 
         shadow.appendChild(rowTemplate.content.cloneNode(true))
