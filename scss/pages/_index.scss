@@ -5,9 +5,9 @@ body {
 }
 
 .page__container {
+  @include even-shadow;
   padding: $md_padding;
-  height: 100% ;
-  box-shadow: $element_shadow;
+  height: 100%;
   background-color: $secondary_blue;
 
   .error {

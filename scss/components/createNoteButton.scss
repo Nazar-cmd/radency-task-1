@@ -11,16 +11,39 @@
     width: $lg_button-size;
     border-radius: $element_border-radius;
     background-color: $primary_yellow;
-    border: $element_border;
-    transition: all 0.25s ease-in-out;
+    @include side-border($md_border-thickness, $secondary_gray);
+    padding: 0;
+    transition: {
+      property: background-color, border-color;
+      duration: $sm_transition-duration;
+      timing-function: ease;
+    }
 
     &:active {
       background-color: $secondary_yellow;
-      border-color: $active_border-color;
+      border-color: $primary_gray;
+    }
+
+    &_input {
+      opacity: 0;
+      position: absolute;
+
+      &:checked ~ .add_note__popup__container {
+        @include show-element($to-show: true);
+      }
     }
 
     &_text {
       font-weight: bold;
+      width: 100%;
+      display: inline-block;
+    }
+
+    .add_note__popup__container {
+      @include show-element($to-show: false);
+      @extend %center-container-elements;
+      @extend %full-page-absolute-container;
+      background: rgba(60, 60, 60, 0.4);
     }
   }
 }

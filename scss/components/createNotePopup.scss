@@ -1,0 +1,75 @@
+@import "../settings-main";
+
+.add_note__popup {
+  @include even-shadow($light_shadow-color);
+  border-radius: $element_border-radius;
+  background-color: $secondary_blue;
+  width: $md_popup-size;
+ /* max-width: $md_popup-size;
+  width: 100%;*/
+  padding: $md_padding;
+  margin: $md_margin;
+
+  .popup__group {
+    position: relative;
+    padding-top: $md_padding;
+    margin-top: 10px;
+  }
+
+  .popup__input {
+    border: 0;
+    @include side-border($primary_gray, $sm_border-thickness, bottom);
+    width: 100%;
+    outline: 0;
+    font-size: $md_font-size;
+    padding: 10px 0;
+    background: transparent;
+    transition: border-color $sm_transition-duration;
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:focus {
+      padding-bottom: 6px;
+      @include side-border($md_border-thickness, $primary_blue, bottom);
+    }
+  }
+
+  textarea {
+   resize: none;
+  }
+
+  .popup__input:placeholder-shown ~ .popup__label {
+    font-size: $md_font-size;
+    cursor: text;
+    top: 20px;
+  }
+
+  label, .popup__input:focus ~ .popup__label {
+    position: absolute;
+    display: block;
+    transition: 0.2s;
+    top: 0;
+    font-size: $sm_font-size;
+    color: $secondary_font-color;
+  }
+
+  .popup__input:focus ~ .popup__label {
+    color: $primary_blue;
+  }
+
+  .popup__button {
+    transition: box-shadow $sm_transition-duration ease;
+    background-color: transparent;
+    width: 100%;
+    border: 0;
+    box-shadow: 0 4px 6px -6px #222;
+    padding: $sm_margin-vertical;
+    @include side-border($primary_gray, $sm_border-thickness, bottom);
+
+    &:active {
+      box-shadow: none;
+    }
+  }
+}
