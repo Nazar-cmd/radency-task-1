@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 /* Указываем box sizing */
 *,
 *::before,
@@ -77,6 +78,10 @@ select {
     scroll-behavior: auto !important;
   }
 }
+html {
+  font-family: "Montserrat", sans-serif;
+}
+
 html {
   height: 100%;
 }

@@ -102,7 +102,6 @@ export default class CreateNotePopup extends HTMLElement{
     }
 
     getFormInputs = () => {
-        console.log("213")
         return Array.from(this.shadow.querySelectorAll("input, select, textarea"));
     }
 

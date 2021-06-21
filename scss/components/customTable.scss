@@ -23,6 +23,7 @@
 
     &_content {
       display: flex;
+      min-width: 100%;
 
       .icon {
         margin: 0 $sm_margin;
@@ -31,7 +32,6 @@
     }
 
     &_text {
-
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
