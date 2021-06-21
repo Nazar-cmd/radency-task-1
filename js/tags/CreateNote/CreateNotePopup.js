@@ -40,6 +40,8 @@ export default class CreateNotePopup extends HTMLElement{
     constructor() {
         super();
 
+        const self = this;
+
         this.shadow = this.attachShadow({mode: "open"});
 
         const linkElem = document.createElement('link');
@@ -60,22 +62,20 @@ export default class CreateNotePopup extends HTMLElement{
             if (e.target === this)
                 return;
 
-            this.closePopup();
+            self.closePopup(self.getFormInputs());
         })
-        /*const icon_delete_all = shadow.querySelector(".icon_delete_all")
-        icon_delete_all.addEventListener("click", ()=>{
-            store.dispatch("deleteAllNotes", {})
-        })*/
     }
 
     closePopup = () => {
-        this.parentContainer.className = "add_note__popup__container closed"
+        const formInputs = this.getFormInputs();
+        this.parentContainer.className = "add_note__popup__container closed";
+        formInputs.forEach(el => el.value = "");
     }
 
     addNote = (e) => {
         e.preventDefault()
 
-        const formInputs = Array.from(this.shadow.querySelectorAll("input, select, textarea"));
+        const formInputs = this.getFormInputs();
 
         const areValidElements = !formInputs.map(el => {
             el.checkValidity();
@@ -101,13 +101,14 @@ export default class CreateNotePopup extends HTMLElement{
         this.closePopup()
     }
 
+    getFormInputs = () => {
+        console.log("213")
+        return Array.from(this.shadow.querySelectorAll("input, select, textarea"));
+    }
+
     getParentContainer = () => {
         return this.shadow.host.getRootNode()
             .childNodes[2].childNodes[3].parentElement
             .querySelector(".add_note__popup__container");
-    }
-
-    clearFields = () => {
-
     }
 }
