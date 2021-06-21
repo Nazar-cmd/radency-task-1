@@ -1,6 +1,6 @@
 export default {
     createNote(state, payload) {
-        state.notes.push(payload)
+        state.notes.push(payload.note)
         
         return state;
     },

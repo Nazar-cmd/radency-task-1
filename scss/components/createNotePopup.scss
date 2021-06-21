@@ -19,6 +19,7 @@
   padding: $md_padding;
   margin: $md_margin;
 
+
   &__popup__container {
     @include show-element($to-show: false);
     @extend %center-container-elements;

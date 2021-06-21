@@ -1,18 +1,3 @@
-
-
-
-/*const date = new Date(2009, 10, 10);  // 2009-11-10
-const month = date.toLocaleString('default', { month: 'long' });
-console.log(month);
-
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-
-today = mm + '/' + dd + '/' + yyyy;
-console.log(today)*/
-
 import PubSub from "../lib/pubsub.js";
 
 export default class Store {

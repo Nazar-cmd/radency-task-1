@@ -1,16 +1,19 @@
+import { getCurrentDate } from "../utils.js";
+import store from "../../store"
+
 
 const createNotePopupTemplate = document.createElement("template");
 createNotePopupTemplate.innerHTML = `
-<div class="add_note__popup">
+<form class="add_note__popup" autocomplete="off">
     <div class="popup__exit">
         <img class="popup__exit_icon" src="assets/icons/times-solid.svg" alt="close">
     </div>
     <div class="popup__group">
-        <input type="text" id="note__name" class="popup__input" placeholder="Note name" required>
+        <input type="text" id="note__name" class="popup__input" placeholder="Note name" field="name" required>
         <label for="note__name" class="popup__label">Note name</label>
     </div>
     <div class="popup__group popup__input_select">
-        <select class="popup__input" required>
+        <select class="popup__input" id="note__category" field="category" required>
             <option class="popup__input_variant" value="" disabled selected></option>
             <option class="popup__input_variant" value="Random Thought">Random Thought</option>
             <option class="popup__input_variant" value="Task">Task</option>
@@ -21,16 +24,19 @@ createNotePopupTemplate.innerHTML = `
         <label class="popup__label">Note name</label>
     </div>
     <div class="popup__group">
-        <textarea id="note__content" class="popup__input popup__input_textarea" placeholder="Note content" rows="3" required></textarea>
+        <textarea id="note__content" class="popup__input popup__input_textarea" placeholder="Note content" rows="3" field="content" required></textarea>
         <label for="note__content" class="popup__label">Note content</label>
     </div>
-    <button type="button" class="popup__button popup__button_add">
+    <button type="submit" class="popup__button popup__button_add">
         <h3>CREATE</h3>
     </button>
-</div>
+</form>
 `
 
 export default class CreateNotePopup extends HTMLElement{
+
+    parentContainer = document.createElement("div")
+
     constructor() {
         super();
 
@@ -48,7 +54,14 @@ export default class CreateNotePopup extends HTMLElement{
 
         this.shadow.querySelector(".popup__exit_icon").addEventListener("click", this.closePopup)
 
+        this.parentContainer = this.getParentContainer();
 
+        this.parentContainer.addEventListener("click", (e)=>{
+            if (e.target === this)
+                return;
+
+            this.closePopup();
+        })
         /*const icon_delete_all = shadow.querySelector(".icon_delete_all")
         icon_delete_all.addEventListener("click", ()=>{
             store.dispatch("deleteAllNotes", {})
@@ -56,19 +69,45 @@ export default class CreateNotePopup extends HTMLElement{
     }
 
     closePopup = () => {
-        const popupContainer = this.shadow.host.getRootNode()
-            .childNodes[2].childNodes[3].parentElement
-            .querySelector(".add_note__popup__container");
-
-        popupContainer.className = "add_note__popup__container closed"
+        this.parentContainer.className = "add_note__popup__container closed"
     }
 
-    addNote = () => {
-        const name = this.shadow.querySelector("#note__name").value
-        const content = this.shadow.querySelector("#note__content").value
+    addNote = (e) => {
+        e.preventDefault()
 
-        console.log({name, content})
+        const formInputs = Array.from(this.shadow.querySelectorAll("input, select, textarea"));
 
+        const areValidElements = !formInputs.map(el => {
+            el.checkValidity();
+            return el.reportValidity();
+        }).includes(false)
+
+        if (!areValidElements) {
+            return
+        }
+
+        const note = {}
+
+        formInputs.forEach(el => {
+            const fieldName = el.getAttribute("field");
+
+            note[fieldName] = el.value;
+        });
+
+        note.created = getCurrentDate();
+        note.archived = false;
+
+        store.dispatch("createNote", {note})
         this.closePopup()
+    }
+
+    getParentContainer = () => {
+        return this.shadow.host.getRootNode()
+            .childNodes[2].childNodes[3].parentElement
+            .querySelector(".add_note__popup__container");
+    }
+
+    clearFields = () => {
+
     }
 }
