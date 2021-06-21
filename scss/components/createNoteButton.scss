@@ -24,26 +24,30 @@
       border-color: $primary_gray;
     }
 
-    &_input {
+/*    &_input {
       opacity: 0;
       position: absolute;
 
       &:checked ~ .add_note__popup__container {
         @include show-element($to-show: true);
       }
-    }
+    }*/
 
     &_text {
       font-weight: bold;
       width: 100%;
       display: inline-block;
     }
+  }
 
-    .add_note__popup__container {
+  &__popup__container {
+    @include show-element($to-show: true);
+    @extend %center-container-elements;
+    @extend %full-page-absolute-container;
+    background: rgba(60, 60, 60, 0.4);
+
+    &.closed {
       @include show-element($to-show: false);
-      @extend %center-container-elements;
-      @extend %full-page-absolute-container;
-      background: rgba(60, 60, 60, 0.4);
     }
   }
 }
