@@ -34,14 +34,13 @@ export default {
         return state;
     },
     updateNote(state, payload) {
-        const {index, newNote} = payload;
+        const {index, note} = payload;
         const copy = [...state.notes];
-
-        console.log(payload)
+        const copyEl = copy[index]
 
         copy[index] = {
-            ...copy[index],
-            ...newNote
+            ...copyEl,
+            ...note
         };
 
         state = {

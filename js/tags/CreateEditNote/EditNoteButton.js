@@ -33,9 +33,10 @@ export default class EditNoteButton extends HTMLElement{
     iconClick = () => {
         this.popupContainer.className = "note__popup__container";
 
-        this.popupContainer.querySelector("form")
+        this.popupContainer
+            .querySelector("form")
             .addEventListener("submit",
-                notePopupSubmit("updateNote", this.popupContainer, {}))
+                notePopupSubmit("updateNote", this.popupContainer, {index: this.mapIndex}))
         this.fillWithInitialValue(this.mapIndex, this.popupContainer)
     }
 
