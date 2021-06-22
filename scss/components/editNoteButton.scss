@@ -9,14 +9,5 @@
     cursor: pointer;
   }
 
-  .edit_note__popup__container {
-    @include show-element($to-show: true);
-    @extend %center-container-elements;
-    @extend %full-page-absolute-container;
-    background: rgba(60, 60, 60, 0.4);
-
-    &.closed {
-      @include show-element($to-show: false);
-    }
-  }
+  @include closed-popup-container;
 }

@@ -1,7 +1,19 @@
+function getCurrentDate() {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = today.toLocaleString('default', { month: 'long' });
+    const year = today.getFullYear();
+
+    return `${month} ${day}, ${year}`
+}
+
 export default {
     createNote(state, payload) {
         const copy = [...state.notes];
-        copy.push(payload.note)
+        const newNote = payload.note;
+        newNote.created = getCurrentDate();
+        newNote.archived = false;
+        copy.push(newNote)
 
         state = {
             ...state,
@@ -25,7 +37,12 @@ export default {
         const {index, newNote} = payload;
         const copy = [...state.notes];
 
-        copy[index] = newNote;
+        console.log(payload)
+
+        copy[index] = {
+            ...copy[index],
+            ...newNote
+        };
 
         state = {
             ...state,

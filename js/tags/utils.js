@@ -11,16 +11,7 @@ function getCategoryIconPath(category) {
     return categoryIconsPath[category.replace(" ", "_").toLowerCase()];
 }
 
-function getCurrentDate() {
-    const today = new Date();
-    const day = String(today.getDate()).padStart(2, '0');
-    const month = today.toLocaleString('default', { month: 'long' });
-    const year = today.getFullYear();
-
-    return `${month} ${day}, ${year}`
-}
-
-const notePopupSubmit = (actionKey, formElement, parentContainer) => (e) => {
+const notePopupSubmit = (actionKey, formElement, parentContainer, payload) => (e) => {
 
     e.preventDefault()
 
@@ -34,13 +25,10 @@ const notePopupSubmit = (actionKey, formElement, parentContainer) => (e) => {
         note[fieldName] = el.value;
     });
 
-    note.created = getCurrentDate();
-    note.archived = false;
+    store.dispatch(actionKey, {note, ...payload})
 
-    store.dispatch(actionKey, {note})
-
-    parentContainer.className = "add_note__popup__container closed";
+    parentContainer.className = "note__popup__container closed";
     formInputs.forEach(el => el.value = "");
 }
 
-export { getCategoryIconPath, getCurrentDate, notePopupSubmit }
+export { getCategoryIconPath, notePopupSubmit }

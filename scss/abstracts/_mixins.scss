@@ -57,37 +57,50 @@
   }
 }
 
-  %full-page-absolute-container {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    right: 0;
-  }
+@mixin closed-popup-container {
+  .note__popup__container {
+    @include show-element($to-show: true);
+    @extend %center-container-elements;
+    @extend %full-page-absolute-container;
+    background: rgba(60, 60, 60, 0.4);
 
-  %container-x-overflow {
-    max-width: 100%;
-    overflow-x: auto;
+    &.closed {
+      @include show-element($to-show: false);
+    }
   }
+}
 
-  %center-horizontally-absolute-element {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+%full-page-absolute-container {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  right: 0;
+}
 
-  %center-absolute-element {
-    @extend %center-horizontally-absolute-element;
-    top: 50%;
-  }
+%container-x-overflow {
+  max-width: 100%;
+  overflow-x: auto;
+}
 
-  %center-horizontally-container-elements {
-    display: flex;
-    justify-content: center;
-  }
+%center-horizontally-absolute-element {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+%center-absolute-element {
+  @extend %center-horizontally-absolute-element;
+  top: 50%;
+}
+
+%center-horizontally-container-elements {
+  display: flex;
+  justify-content: center;
+}
 
 
-  %center-container-elements {
-    @extend %center-horizontally-container-elements;
-    align-items: center;
-  }
+%center-container-elements {
+  @extend %center-horizontally-container-elements;
+  align-items: center;
+}
