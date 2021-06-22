@@ -8,15 +8,14 @@ createNoteButtonTemplate.innerHTML = `
             Add note!
         </span>
     </button>
-     <div class="note__popup__container closed">
-        <create-edit-note-popup></create-edit-note-popup>
-     </div>
 </div>
 `
 
 export default class CreateNoteButton extends HTMLElement{
     constructor() {
         super();
+
+        const popupContainer = document.querySelector("#note-popup").shadowRoot.querySelector(".note__popup__container")
 
         const shadow = this.attachShadow({mode: "open"});
 
@@ -30,14 +29,16 @@ export default class CreateNoteButton extends HTMLElement{
 
         shadow.querySelector(".add_note__button")
             .addEventListener("click", () => {
-                shadow.querySelector(".note__popup__container").className = "note__popup__container"
+                popupContainer.className = "note__popup__container";
+                popupContainer.querySelector("form")
+                    .addEventListener("submit", notePopupSubmit("createNote", popupContainer, {}))
         })
 
 
-        const popupForm = shadow.querySelector("create-edit-note-popup").shadowRoot.querySelector("form");
-        const popupContainer = shadow.querySelector(".note__popup__container")
+       /* const popupForm = shadow.querySelector("create-edit-note-popup").shadowRoot.querySelector("form");
+        const popupContainer = shadow.querySelector(".note__popup__container")*/
 
-        popupForm.addEventListener("submit", notePopupSubmit("createNote", popupForm, popupContainer, {}))
+        //popupForm.addEventListener("submit", notePopupSubmit("createNote", popupForm, popupContainer, {}))
 
     }
 }

@@ -1,4 +1,5 @@
 import store from "../../store"
+import { getFormInputs, closePopup } from "../utils.js"
 
 function getCategoryOptions(initValue) {
     const categories = ["Random Thought", "Task", "Idea", "Quote"];
@@ -12,8 +13,6 @@ function getCategoryOptions(initValue) {
 
 //Todo: only one popup on page
 export default class CreateEditNotePopup extends HTMLElement{
-
-    parentContainer = document.createElement("div")
 
     constructor() {
         super();
@@ -41,30 +40,32 @@ export default class CreateEditNotePopup extends HTMLElement{
 
         const createNotePopupTemplate = document.createElement("template");
         createNotePopupTemplate.innerHTML = `
-            <form class="add_note__popup" autocomplete="off">
-                <div class="popup__exit">
-                    <img class="popup__exit_icon" src="assets/icons/times-solid.svg" alt="close">
-                </div>
-                <div class="popup__group">
-                    <input type="text" id="note__name" class="popup__input" placeholder="Note name" field="name" required value=${initValues.name}>
-                    <label for="note__name" class="popup__label">Note name</label>
-                </div>
-                <div class="popup__group popup__input_select">
-                    <select class="popup__input" id="note__category" field="category" required>
-                        <option class="popup__input_variant" value="" disabled selected="selected"></option>
-                        ${getCategoryOptions(initValues.category)}
-                    </select>
-                    <span class="select-highlight"></span>
-                    <label class="popup__label">Note name</label>
-                </div>
-                <div class="popup__group">
-                    <textarea id="note__content" class="popup__input popup__input_textarea" placeholder="Note content" rows="3" field="content" required value=${initValues.content}></textarea>
-                    <label for="note__content" class="popup__label">Note content</label>
-                </div>
-                <button type="submit" class="popup__button popup__button_add">
-                    <h3>CREATE</h3>
-                </button>
-            </form>
+            <div class="note__popup__container closed">
+                <form class="note__popup" autocomplete="off">
+                    <div class="popup__exit">
+                        <img class="popup__exit_icon" src="assets/icons/times-solid.svg" alt="close">
+                    </div>
+                    <div class="popup__group">
+                        <input type="text" id="note__name" class="popup__input" placeholder="Note name" field="name" required value=${initValues.name}>
+                        <label for="note__name" class="popup__label">Note name</label>
+                    </div>
+                    <div class="popup__group popup__input_select">
+                        <select class="popup__input" id="note__category" field="category" required>
+                            <option class="popup__input_variant" value="" disabled selected="selected"></option>
+                            ${getCategoryOptions(initValues.category)}
+                        </select>
+                        <span class="select-highlight"></span>
+                        <label class="popup__label">Category</label>
+                    </div>
+                    <div class="popup__group">
+                        <textarea id="note__content" class="popup__input popup__input_textarea" placeholder="Note content" rows="3" field="content" required value=${initValues.content}></textarea>
+                        <label for="note__content" class="popup__label">Note content</label>
+                    </div>
+                    <button type="submit" class="popup__button popup__button_submit">
+                        <h3>CREATE</h3>
+                    </button>
+                </form>
+            </div>
 `
 
 
@@ -78,31 +79,30 @@ export default class CreateEditNotePopup extends HTMLElement{
 
         this.shadow.appendChild(createNotePopupTemplate.content.cloneNode(true))
 
-        this.shadow.querySelector(".popup__exit_icon").addEventListener("click", this.closePopup)
+        this.popupContainer = this.shadow.querySelector(".note__popup__container")
 
-        this.parentContainer = this.getParentContainer();
-        this.parentContainer.addEventListener("click", (e)=>{
-            if (e.target === this)
+        this.shadow.querySelector(".popup__exit_icon").addEventListener("click", ()=>closePopup(this.popupContainer))
+
+        this.popupContainer.addEventListener("click", function (e){
+            if (e.target !== this)
                 return;
 
-            self.closePopup(self.getFormInputs());
+            closePopup(self.popupContainer)
         })
+
     }
 
-    closePopup = () => {
+/*    closePopup = () => {
         const formInputs = this.getFormInputs();
 
-        this.parentContainer.className += " closed";
+        this.popupContainer.className += " closed";
         formInputs.forEach(el => el.value = "");
+
+        const form = this.shadow.querySelector("form");
+        form.replaceWith(form.cloneNode(true));
     }
 
     getFormInputs = () => {
         return Array.from(this.shadow.querySelectorAll("input, select, textarea"));
-    }
-
-    getParentContainer = () => {
-
-        return this.shadow.host.getRootNode().host.shadowRoot.querySelector(".note__popup__container")
-
-    }
+    }*/
 }

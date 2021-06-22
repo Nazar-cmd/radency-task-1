@@ -10,7 +10,7 @@
   color: $secondary_font-color;
 }
 
-.add_note__popup {
+.note__popup {
   @include even-shadow($light_shadow-color);
   border-radius: $element_border-radius;
   background-color: $secondary_blue;
@@ -20,11 +20,15 @@
   margin: $md_margin;
 
 
-  &__popup__container {
-    @include show-element($to-show: false);
+  &__container {
+    @include show-element($to-show: true);
     @extend %center-container-elements;
     @extend %full-page-absolute-container;
     background: rgba(60, 60, 60, 0.4);
+
+    &.closed {
+      @include show-element($to-show: false);
+    }
   }
 
   .popup {

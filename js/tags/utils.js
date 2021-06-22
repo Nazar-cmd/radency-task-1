@@ -11,11 +11,29 @@ function getCategoryIconPath(category) {
     return categoryIconsPath[category.replace(" ", "_").toLowerCase()];
 }
 
-const notePopupSubmit = (actionKey, formElement, parentContainer, payload) => (e) => {
+const removeListenersFromElement = (container, selector) => {
+    const el = container.querySelector(selector);
+    el.replaceWith(el.cloneNode(true));
+}
+
+const closePopup = (container) => {
+    const formInputs = getFormInputs(container);
+
+    container.className += " closed";
+    formInputs.forEach(el => el.value = "");
+
+    removeListenersFromElement(container, "form")
+}
+
+const getFormInputs = (container) => {
+    return Array.from(container.querySelectorAll("input, select, textarea"));
+}
+
+const notePopupSubmit = (actionKey, container, payload) => (e) => {
 
     e.preventDefault()
 
-    const formInputs = Array.from(formElement.querySelectorAll("input, select, textarea"));
+    const formInputs = getFormInputs(container)
 
     const note = {}
 
@@ -25,10 +43,9 @@ const notePopupSubmit = (actionKey, formElement, parentContainer, payload) => (e
         note[fieldName] = el.value;
     });
 
-    store.dispatch(actionKey, {note, ...payload})
+    //store.dispatch(actionKey, {note, ...payload})
 
-    parentContainer.className = "note__popup__container closed";
-    formInputs.forEach(el => el.value = "");
+    closePopup(container)
 }
 
-export { getCategoryIconPath, notePopupSubmit }
+export { getCategoryIconPath, notePopupSubmit, closePopup, getFormInputs }

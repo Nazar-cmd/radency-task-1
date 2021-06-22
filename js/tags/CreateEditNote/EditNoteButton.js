@@ -12,13 +12,11 @@ export default class EditNoteButton extends HTMLElement{
         editNoteButtonTemplate.innerHTML = `
             <div class="edit_note__button">
                  <img src="assets/icons/pen-solid.svg" class="icon table__row_icon icon_edit" alt="archive">
-                 <div class="note__popup__container closed">
-                    <create-edit-note-popup mapIndex=${mapIndex}></create-edit-note-popup>
-                 </div>
+                 
             </div>
 `
 
-        const shadow = this.attachShadow({mode: "open"});
+/*        const shadow = this.attachShadow({mode: "open"});
 
         const linkElem = document.createElement('link');
         linkElem.setAttribute('rel', 'stylesheet');
@@ -41,7 +39,7 @@ export default class EditNoteButton extends HTMLElement{
         const popupForm = shadow.querySelector("create-edit-note-popup").shadowRoot.querySelector("form");
         const popupContainer = shadow.querySelector(".note__popup__container")
 
-        popupForm.addEventListener("submit", notePopupSubmit("updateNote", popupForm, popupContainer, {index: mapIndex}))
+        popupForm.addEventListener("submit", notePopupSubmit("updateNote", popupForm, popupContainer, {index: mapIndex}))*/
 
     }
 }
