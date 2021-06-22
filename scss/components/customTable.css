@@ -1,0 +1,172 @@
+@charset "UTF-8";
+.table {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+html {
+  font-family: "Montserrat", sans-serif;
+}
+
+.table {
+  height: 350px;
+  max-height: 100%;
+  padding: 0 0.5rem;
+}
+.table__cell {
+  min-width: 100px;
+  align-items: center;
+  padding: 0.75rem;
+  display: flex;
+  flex: 1;
+}
+.table__cell:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.table__cell:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.table__cell_content {
+  display: flex;
+  min-width: 100%;
+}
+.table__cell_content .icon {
+  margin: 0 0.5rem;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.table__cell_text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.table__row {
+  position: relative;
+  display: flex;
+  margin-top: 1rem;
+  min-width: 100%;
+}
+.table__row.archived .table__cell {
+  background-color: #d0c9c9;
+}
+.table__row_content {
+  color: #737373;
+}
+.table__row_content .table__cell {
+  background-color: #FFD299;
+}
+.table__row_content .table__cell_name {
+  align-items: center;
+  color: #000000;
+}
+.table__row_content .table__cell_name .cell__text {
+  margin-left: 0.5rem;
+}
+.table__row_content .table__cell_name .icon {
+  width: 35px;
+  height: 35px;
+  cursor: auto;
+}
+.table__header_container {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.table__header {
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 0;
+}
+.table__header_content {
+  width: 100%;
+  justify-content: flex-end;
+}
+.table__header .table__cell {
+  background-color: #ffbb73;
+}
+.table__header .table__cell:first-of-type {
+  justify-content: center;
+}
+
+/*# sourceMappingURL=customTable.css.map */
