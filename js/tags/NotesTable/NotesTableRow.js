@@ -6,6 +6,9 @@ export default class NotesTableRow extends HTMLElement{
     constructor() {
         super();
 
+
+
+
         const name = this.getAttribute("name");
         const created = this.getAttribute("created");
         const category = this.getAttribute("category");
@@ -30,20 +33,20 @@ export default class NotesTableRow extends HTMLElement{
                 <div class="table__cell">
                     <div class="table__cell_content table__cell_name">
                         <img src=${categoryIconPath} class="icon table__row_icon" alt="category_icon">
-                        <p class="table__cell_text">${name}</p>
+                        <p class="table__cell_text" title="${name}">${name}</p>
                     </div>
                 </div>
                 <div class="table__cell">
-                    <p class="table__cell_text">${created}</p>
+                    <p class="table__cell_text" title="${created}">${created}</p>
                 </div>
                 <div class="table__cell" >
                     <p class="table__cell_text">${category}</p>
                 </div>
                 <div class="table__cell">
-                    <p class="table__cell_text">${content}</p>
+                    <p class="table__cell_text" title="${content}">${content}</p>
                 </div>
                 <div class="table__cell">
-                    <p class="table__cell_text">${dates}</p>
+                    <p class="table__cell_text" title="${dates}">${dates}</p>
                 </div>
                 <div class="table__cell">
                     <div class="table__cell_content table__header_content">
@@ -63,7 +66,6 @@ export default class NotesTableRow extends HTMLElement{
         shadow.appendChild(linkElem);
 
         shadow.appendChild(rowTemplate.content.cloneNode(true))
-
 
         const icon_archive = shadow.querySelector(".icon_archive")
         icon_archive.addEventListener("click", ()=>{
