@@ -43,7 +43,8 @@ const notePopupSubmit = (actionKey, container, payload) => (e) => {
         note[fieldName] = el.value;
     });
 
-    //store.dispatch(actionKey, {note, ...payload})
+    console.log(note)
+    store.dispatch(actionKey, {note, ...payload})
 
     closePopup(container)
 }

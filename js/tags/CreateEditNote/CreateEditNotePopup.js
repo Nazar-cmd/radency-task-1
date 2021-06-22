@@ -1,17 +1,16 @@
 import store from "../../store"
-import { getFormInputs, closePopup } from "../utils.js"
+import { closePopup } from "../utils.js"
 
 function getCategoryOptions(initValue) {
     const categories = ["Random Thought", "Task", "Idea", "Quote"];
 
     return categories.map(category => {
         if (category === initValue)
-            return `<option class="popup__input_variant" value=${category} selected="selected">${category}</option>`
-        return `<option class="popup__input_variant" value=${category}>${category}</option>`
+            return `<option class="popup__input_variant" value="${category}" selected="selected">${category}</option>`
+        return `<option class="popup__input_variant" value="${category}">${category}</option>`
     }).join('')
 }
 
-//Todo: only one popup on page
 export default class CreateEditNotePopup extends HTMLElement{
 
     constructor() {
@@ -41,30 +40,32 @@ export default class CreateEditNotePopup extends HTMLElement{
         const createNotePopupTemplate = document.createElement("template");
         createNotePopupTemplate.innerHTML = `
             <div class="note__popup__container closed">
-                <form class="note__popup" autocomplete="off">
-                    <div class="popup__exit">
-                        <img class="popup__exit_icon" src="assets/icons/times-solid.svg" alt="close">
+                <div class="note__popup">
+                    <div class="note__popup__exit">
+                        <img class="note__popup__exit_icon" src="assets/icons/times-solid.svg" alt="close">
                     </div>
-                    <div class="popup__group">
-                        <input type="text" id="note__name" class="popup__input" placeholder="Note name" field="name" required value=${initValues.name}>
-                        <label for="note__name" class="popup__label">Note name</label>
-                    </div>
-                    <div class="popup__group popup__input_select">
-                        <select class="popup__input" id="note__category" field="category" required>
-                            <option class="popup__input_variant" value="" disabled selected="selected"></option>
-                            ${getCategoryOptions(initValues.category)}
-                        </select>
-                        <span class="select-highlight"></span>
-                        <label class="popup__label">Category</label>
-                    </div>
-                    <div class="popup__group">
-                        <textarea id="note__content" class="popup__input popup__input_textarea" placeholder="Note content" rows="3" field="content" required value=${initValues.content}></textarea>
-                        <label for="note__content" class="popup__label">Note content</label>
-                    </div>
-                    <button type="submit" class="popup__button popup__button_submit">
-                        <h3>CREATE</h3>
-                    </button>
-                </form>
+                    <form class="note__popup_form" autocomplete="off">
+                        <div class="popup__group">
+                            <input type="text" id="note__name" class="popup__input" placeholder="Note name" field="name" required value=${initValues.name}>
+                            <label for="note__name" class="popup__label">Note name</label>
+                        </div>
+                        <div class="popup__group popup__input_select">
+                            <select class="popup__input" id="note__category" field="category" required>
+                                <option class="popup__input_variant" value="" disabled selected="selected"></option>
+                                ${getCategoryOptions(initValues.category)}
+                            </select>
+                            <span class="select-highlight"></span>
+                            <label class="popup__label">Category</label>
+                        </div>
+                        <div class="popup__group">
+                            <textarea id="note__content" class="popup__input popup__input_textarea" placeholder="Note content" rows="3" field="content" required value=${initValues.content}></textarea>
+                            <label for="note__content" class="popup__label">Note content</label>
+                        </div>
+                        <button type="submit" class="popup__button popup__button_submit">
+                            <h3>CREATE</h3>
+                        </button>
+                    </form>
+                </div>
             </div>
 `
 
@@ -81,7 +82,14 @@ export default class CreateEditNotePopup extends HTMLElement{
 
         this.popupContainer = this.shadow.querySelector(".note__popup__container")
 
-        this.shadow.querySelector(".popup__exit_icon").addEventListener("click", ()=>closePopup(this.popupContainer))
+        this.shadow.querySelector(".note__popup__exit_icon").addEventListener("click", (e)=>{
+            /*if (e.target !== this)
+                return;*/
+
+            console.log("123")
+
+            closePopup(self.popupContainer)
+        })
 
         this.popupContainer.addEventListener("click", function (e){
             if (e.target !== this)

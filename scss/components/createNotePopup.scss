@@ -31,18 +31,20 @@
     }
   }
 
+  &__exit {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    &_icon {
+      @include draw-square($sm_icon-size);
+      cursor: pointer;
+    }
+  }
+
   .popup {
 
-    &__exit {
-      display: flex;
-      justify-content: flex-end;
-      width: 100%;
 
-      &_icon {
-        @include draw-square($sm_icon-size);
-        cursor: pointer;
-      }
-    }
 
     &__group {
       position: relative;
