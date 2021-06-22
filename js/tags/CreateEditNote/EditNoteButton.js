@@ -1,5 +1,5 @@
 import {getFormInputs, notePopupSubmit} from "../utils.js";
-import store from "../../store"
+import store from "../../store/index.js"
 
 const editNoteButtonTemplate = document.createElement("template");
 editNoteButtonTemplate.innerHTML = `
