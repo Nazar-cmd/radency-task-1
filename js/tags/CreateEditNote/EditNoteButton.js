@@ -1,22 +1,22 @@
-import {notePopupSubmit} from "../utils.js";
+import {getFormInputs, notePopupSubmit} from "../utils.js";
+import store from "../../store"
 
-
+const editNoteButtonTemplate = document.createElement("template");
+editNoteButtonTemplate.innerHTML = `
+    <div class="edit_note__button"><img src="assets/icons/pen-solid.svg" class="icon table__row_icon icon_edit" alt="edit"></div>
+`
 
 export default class EditNoteButton extends HTMLElement{
     constructor() {
         super();
 
-        const mapIndex = this.getAttribute("mapIndex");
+        const popup = document.querySelector("#note-popup")
 
-        const editNoteButtonTemplate = document.createElement("template");
-        editNoteButtonTemplate.innerHTML = `
-            <div class="edit_note__button">
-                 <img src="assets/icons/pen-solid.svg" class="icon table__row_icon icon_edit" alt="archive">
-                 
-            </div>
-`
+        this.popupContainer = popup.shadowRoot.querySelector(".note__popup__container")
 
-/*        const shadow = this.attachShadow({mode: "open"});
+        this.mapIndex = this.getAttribute("mapIndex")
+
+        const shadow = this.attachShadow({mode: "open"});
 
         const linkElem = document.createElement('link');
         linkElem.setAttribute('rel', 'stylesheet');
@@ -26,20 +26,32 @@ export default class EditNoteButton extends HTMLElement{
 
         shadow.appendChild(editNoteButtonTemplate.content.cloneNode(true))
 
-        shadow.querySelector(".icon_edit")
-            .addEventListener("click", (e) => {
+        shadow.querySelector(".edit_note__button")
+            .addEventListener("click", this.iconClick)
+    }
 
-                if (e.target === this)
-                    return;
+    iconClick = () => {
+        this.popupContainer.className = "note__popup__container";
 
-                shadow.querySelector(".note__popup__container").className = "note__popup__container"
-            })
+        this.popupContainer.querySelector("form")
+            .addEventListener("submit",
+                notePopupSubmit("updateNote", this.popupContainer, {}))
+        this.fillWithInitialValue(this.mapIndex, this.popupContainer)
+    }
 
+    fillWithInitialValue = (index, container) => {
+        const { name, category, content } = store.state.notes[index]
 
-        const popupForm = shadow.querySelector("create-edit-note-popup").shadowRoot.querySelector("form");
-        const popupContainer = shadow.querySelector(".note__popup__container")
+        const formInputs = getFormInputs(container);
 
-        popupForm.addEventListener("submit", notePopupSubmit("updateNote", popupForm, popupContainer, {index: mapIndex}))*/
+        formInputs[0].value = name;
 
+        formInputs[1].querySelectorAll("option").forEach((el)=>{
+            if (el.value === category) {
+                el.setAttribute("selected","selected")
+            }
+        })
+
+        formInputs[2].value = content;
     }
 }

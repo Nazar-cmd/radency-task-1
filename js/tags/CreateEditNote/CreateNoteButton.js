@@ -33,12 +33,5 @@ export default class CreateNoteButton extends HTMLElement{
                 popupContainer.querySelector("form")
                     .addEventListener("submit", notePopupSubmit("createNote", popupContainer, {}))
         })
-
-
-       /* const popupForm = shadow.querySelector("create-edit-note-popup").shadowRoot.querySelector("form");
-        const popupContainer = shadow.querySelector(".note__popup__container")*/
-
-        //popupForm.addEventListener("submit", notePopupSubmit("createNote", popupForm, popupContainer, {}))
-
     }
 }

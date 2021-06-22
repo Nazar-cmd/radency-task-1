@@ -2,12 +2,12 @@
 
 .edit_note__button {
 
+  margin: 0 $sm_margin;
+  @include draw-square($sm_icon-size);
 
   .icon {
-    margin: 0 $sm_margin;
-    @include draw-square($sm_icon-size);
     cursor: pointer;
   }
 
-  @include closed-popup-container;
 }
+

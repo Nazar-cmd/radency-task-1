@@ -20,7 +20,21 @@ const closePopup = (container) => {
     const formInputs = getFormInputs(container);
 
     container.className += " closed";
-    formInputs.forEach(el => el.value = "");
+    formInputs.forEach(el => {
+        if (el.type === "select-one") {
+            el.querySelectorAll("option").forEach((el, i)=>{
+                if (i===0) {
+                    el.setAttribute("selected","selected")
+                }
+                else {
+                    el.removeAttribute("selected")
+                }
+            })
+            return
+        }
+        el.value = ""
+    });
+
 
     removeListenersFromElement(container, "form")
 }
@@ -43,7 +57,6 @@ const notePopupSubmit = (actionKey, container, payload) => (e) => {
         note[fieldName] = el.value;
     });
 
-    console.log(note)
     store.dispatch(actionKey, {note, ...payload})
 
     closePopup(container)
