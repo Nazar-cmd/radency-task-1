@@ -1,0 +1,36 @@
+@import "../settings-main";
+
+.add_note {
+
+  &__container {
+    margin: $md_margin;
+    @extend %center-horizontally-container-elements;
+  }
+
+  &__button {
+    width: $lg_button-size;
+    border-radius: $element_border-radius;
+    background-color: $primary_yellow;
+    @include side-border($md_border-thickness, $secondary_gray);
+    padding: 0;
+    transition: {
+      property: background-color, border-color;
+      duration: $sm_transition-duration;
+      timing-function: ease;
+    }
+
+    &:active {
+      background-color: $secondary_yellow;
+      border-color: $primary_gray;
+    }
+
+    &_text {
+      font-weight: bold;
+      width: 100%;
+      display: inline-block;
+    }
+  }
+}
+
+
+

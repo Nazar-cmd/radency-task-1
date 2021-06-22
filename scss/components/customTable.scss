@@ -1,0 +1,101 @@
+@import "../settings-main";
+
+.table {
+  @extend %container-x-overflow;
+  height: $table-height;
+  max-height: 100%;
+  padding: $sm_padding-horizontally;
+
+  &__cell {
+    min-width: $min_table-cell-size;
+    align-items: center;
+    padding: $md_padding;
+    display: flex;
+    flex: 1;
+
+    &:last-child {
+      @include round-right-side
+    }
+
+    &:first-child {
+      @include round-left-side
+    }
+
+    &_content {
+      display: flex;
+      min-width: 100%;
+
+      .icon {
+        margin: 0 $sm_margin;
+        @include draw-square($sm_icon-size);
+        cursor: pointer;
+      }
+    }
+
+    &_text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__row {
+    position: relative;
+    display: flex;
+    margin-top: $md_margin;
+    min-width: 100%;
+
+    &.archived {
+      .table__cell {
+        background-color: $tertiary_gray;
+      }
+    }
+
+    &_content {
+      color: $secondary_font-color;
+
+      .table__cell {
+        background-color: $secondary_yellow;
+      }
+
+      .table__cell_name {
+        align-items: center;
+        color: $primary_font-color;
+
+        .cell__text {
+          margin-left: $sm_margin;
+        }
+
+        .icon {
+          @include draw-square($md_icon-size);
+          cursor: auto;
+        }
+      }
+    }
+  }
+
+  &__header_container {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  &__header {
+    font-weight: bold;
+    border-radius: $element_border-radius;
+    margin-top: 0;
+
+    &_content {
+      width: 100%;
+      justify-content: flex-end;
+    }
+
+    .table__cell {
+      background-color: $primary_yellow;
+
+      &:first-of-type {
+        justify-content: center;
+      }
+    }
+  }
+}

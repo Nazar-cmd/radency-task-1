@@ -3,8 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="scss/main.css">
+    <script type="module" src="js/tags" ></script>
+    <script type="module" src="js/main.js"></script>
 </head>
 <body>
+<main class="page__container">
+    <create-edit-note-popup id="note-popup"></create-edit-note-popup>
+    <section class="table__container">
+        <custom-table>
+            <notes-table-header slot="header"></notes-table-header>
+            <div id="notes-table-rows">
 
+            </div>
+        </custom-table>
+        <create-note-button></create-note-button>
+    </section>
+    <section>
+        <custom-table>
+            <stats-table-header slot="header"></stats-table-header>
+            <div id="stats-table-rows">
+
+            </div>
+        </custom-table>
+    </section>
+</main>
 </body>
 </html>

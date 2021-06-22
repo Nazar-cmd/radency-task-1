@@ -1,0 +1,94 @@
+@use "sass:list";
+
+@mixin full-height-page-background($html-background: $secondary_yellow){
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    background: $html-background;
+    height: 100%;
+  }
+}
+
+@mixin round-left-side($radius: $element_border-radius){
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin round-right-side($radius: $element_border-radius){
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+@mixin draw-square($side) {
+  width: $side;
+  height: $side;
+}
+
+@mixin even-shadow($shadow-color: $dark_shadow-color) {
+  box-shadow: 0 0 5px 0 $shadow-color;
+}
+
+@mixin show-element($to-show) {
+  @if($to-show) {
+    visibility: visible;
+    overflow: visible;
+    max-height: 100%;
+    z-index: 2;
+  }
+  @else {
+    overflow: hidden;
+    visibility: hidden;
+    max-height: 0;
+  }
+}
+
+@mixin side-border ($color, $thickness: $sm_border-thickness, $side:null) {
+  @if (list.index(top bottom left right, $side)) {
+    border-#{$side}: $thickness solid $color;
+  }
+  @else if ($side == null) {
+    border: $thickness solid $color;
+  }
+  @else {
+    @error "Property #{$side} must be top, bottom, left or right";
+  }
+}
+
+
+%full-page-absolute-container {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  right: 0;
+}
+
+%container-x-overflow {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+%center-horizontally-absolute-element {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+%center-absolute-element {
+  @extend %center-horizontally-absolute-element;
+  top: 50%;
+}
+
+%center-horizontally-container-elements {
+  display: flex;
+  justify-content: center;
+}
+
+
+%center-container-elements {
+  @extend %center-horizontally-container-elements;
+  align-items: center;
+}

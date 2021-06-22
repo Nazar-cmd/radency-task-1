@@ -1,0 +1,55 @@
+$primary_yellow: #ffbb73;
+$secondary_yellow: #FFD299;
+
+$primary_blue: #3687B3;
+$secondary_blue: #CDECFD;
+
+$primary_font-color: #000000;
+$secondary_font-color: #737373;
+
+$dark_shadow-color: #000;
+$light_shadow-color: #fff;
+
+$primary_gray: #b5a3a3;
+$secondary_gray: #cbb4b4;
+$tertiary_gray: #d0c9c9;
+
+
+$sm_margin: 0.5rem;
+$md_margin: 1rem;
+$lg_margin: 2.5rem;
+
+$sm_margin-horizontally: 0 $sm_margin;
+$md_margin-horizontally: 0 $md_margin;
+
+$sm_margin-vertical: $sm_margin 0;
+$md_margin-vertical: $md_margin 0;
+
+
+$sm_padding: 0.5rem;
+$md_padding: 0.75rem;
+
+$sm_padding-horizontally: 0 $sm_padding;
+$md_padding-vertical: 0 $sm_padding;
+
+$sm_border-thickness: 1px;
+$md_border-thickness: 2px;
+
+$element_border: 2px solid $secondary_gray;
+$element_shadow: 0 0 5px 0 #000000;
+$element_border-radius: 5px;
+
+$sm_font-size: 12px;
+$md_font-size: 16px;
+
+$sm_transition-duration: 0.2s;
+
+$sm_icon-size: 20px;
+$md_icon-size: 35px;
+
+$md_popup-size: 350px;
+
+$lg_button-size: 250px;
+
+$table-height: 350px;
+$min_table-cell-size: 100px;

@@ -1,0 +1,21 @@
+@include full-height-page-background;
+
+body {
+  padding: $md_padding;
+}
+
+.page__container {
+  @include even-shadow;
+  padding: $md_padding;
+  height: 100%;
+  background-color: $secondary_blue;
+
+  .error {
+    text-align: center;
+    color: red;
+  }
+
+  .table__container {
+    margin: $md_margin-vertical $lg_margin;
+  }
+}

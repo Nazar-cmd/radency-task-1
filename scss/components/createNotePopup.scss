@@ -1,0 +1,162 @@
+@import "../settings-main";
+
+
+%active-state-input {
+  position: absolute;
+  display: block;
+  transition: $sm_transition-duration;
+  top: 0;
+  font-size: $sm_font-size;
+  color: $secondary_font-color;
+}
+
+.note__popup {
+  @include even-shadow($light_shadow-color);
+  border-radius: $element_border-radius;
+  background-color: $secondary_blue;
+  width: $md_popup-size;
+  height: 343px;
+  padding: $md_padding;
+  margin: $md_margin;
+
+
+  &__container {
+    @include show-element($to-show: true);
+    @extend %center-container-elements;
+    @extend %full-page-absolute-container;
+    background: rgba(60, 60, 60, 0.4);
+
+    &.closed {
+      @include show-element($to-show: false);
+    }
+  }
+
+  &__exit {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    &_icon {
+      @include draw-square($sm_icon-size);
+      cursor: pointer;
+    }
+  }
+
+  .popup {
+
+
+
+    &__group {
+      position: relative;
+      padding-top: $md_padding;
+      margin-top: 4px;
+    }
+
+    &__input {
+      border: 0;
+      @include side-border($primary_gray, $sm_border-thickness, bottom);
+      width: 100%;
+      outline: 0;
+      font-size: $md_font-size;
+      padding: 10px 0;
+      background: transparent;
+      transition: border-color $sm_transition-duration;
+
+      &_textarea {
+        resize: none;
+        margin-top: $sm_margin;
+      }
+
+      &::placeholder {
+        color: transparent;
+      }
+
+      &:placeholder-shown ~ .popup__label {
+        font-size: $md_font-size;
+        cursor: text;
+        top: 20px;
+      }
+
+      &:focus {
+        @include side-border($primary_blue, $md_border-thickness, bottom);
+      }
+
+      & ~ .popup__label, &:focus ~ .popup__label {
+        position: absolute;
+        display: block;
+        transition: $sm_transition-duration;
+        top: 0;
+        font-size: $sm_font-size;
+        color: $secondary_font-color;
+      }
+
+      &:focus ~ .popup__label {
+        color: $primary_blue!important;
+      }
+    }
+
+    &__button {
+      transition: box-shadow $sm_transition-duration ease;
+      background-color: transparent;
+      width: 100%;
+      border: 0;
+      box-shadow: 0 4px 6px -6px #222;
+      margin-top: $sm_margin;
+      padding: $sm_margin-vertical;
+      @include side-border($primary_gray, $sm_border-thickness, bottom);
+      cursor: pointer;
+
+      &:active {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .popup__input_select {
+
+
+    .popup__input_variant {
+      background-color:  $secondary_yellow;
+
+
+    }
+
+    &:focus > .popup__input_variant:checked {
+      background: #000 !important;
+    }
+
+    .popup__input:valid ~ .popup__label {
+      @extend %active-state-input;
+    }
+
+    .popup__label {
+      color: $secondary_font-color;
+      font-size: 16px;
+      font-weight: normal;
+      position: absolute;
+      pointer-events: none;
+      left: 0;
+      top: 18px;
+      transition: $sm_transition-duration ease all;
+    }
+
+    &.popup__group .popup__input {
+      appearance: none;
+      -webkit-appearance:none
+    }
+
+    &.popup__group:after {
+      position: absolute;
+      top: 30px;
+      right: 10px;
+      width: 0;
+      height: 0;
+      padding: 0;
+      content: '';
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      @include side-border($primary_gray, 6px, top);
+      pointer-events: none;
+    }
+  }
+}
