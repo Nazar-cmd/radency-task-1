@@ -1,6 +1,3 @@
-import { getCurrentDate } from "../utils.js";
-import store from "../../store"
-
 
 const createNotePopupTemplate = document.createElement("template");
 createNotePopupTemplate.innerHTML = `
@@ -33,7 +30,7 @@ createNotePopupTemplate.innerHTML = `
 </form>
 `
 
-export default class CreateNotePopup extends HTMLElement{
+export default class CreateEditNotePopup extends HTMLElement{
 
     parentContainer = document.createElement("div")
 
@@ -52,53 +49,25 @@ export default class CreateNotePopup extends HTMLElement{
 
         this.shadow.appendChild(createNotePopupTemplate.content.cloneNode(true))
 
-        this.shadow.querySelector(".popup__button_add").addEventListener("click", this.addNote)
+        //this.shadow.querySelector(".popup__button_add").addEventListener("click", this.addNote)
 
         this.shadow.querySelector(".popup__exit_icon").addEventListener("click", this.closePopup)
 
         this.parentContainer = this.getParentContainer();
-
+/*
         this.parentContainer.addEventListener("click", (e)=>{
             if (e.target === this)
                 return;
 
             self.closePopup(self.getFormInputs());
-        })
+        })*/
     }
 
     closePopup = () => {
         const formInputs = this.getFormInputs();
-        this.parentContainer.className = "add_note__popup__container closed";
+
+        this.parentContainer.className += " closed";
         formInputs.forEach(el => el.value = "");
-    }
-
-    addNote = (e) => {
-        e.preventDefault()
-
-        const formInputs = this.getFormInputs();
-
-        const areValidElements = !formInputs.map(el => {
-            el.checkValidity();
-            return el.reportValidity();
-        }).includes(false)
-
-        if (!areValidElements) {
-            return
-        }
-
-        const note = {}
-
-        formInputs.forEach(el => {
-            const fieldName = el.getAttribute("field");
-
-            note[fieldName] = el.value;
-        });
-
-        note.created = getCurrentDate();
-        note.archived = false;
-
-        store.dispatch("createNote", {note})
-        this.closePopup()
     }
 
     getFormInputs = () => {
@@ -106,8 +75,15 @@ export default class CreateNotePopup extends HTMLElement{
     }
 
     getParentContainer = () => {
-        return this.shadow.host.getRootNode()
+
+        /*return this.shadow.host.getRootNode()
             .childNodes[2].childNodes[3].parentElement
             .querySelector(".add_note__popup__container");
+    */
+
+        const a = this.shadow.host.getRootNode()
+
+        console.log(a)
+
     }
 }

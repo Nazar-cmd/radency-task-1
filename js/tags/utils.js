@@ -1,3 +1,5 @@
+import store from "../store";
+
 const categoryIconsPath = {
     task: "assets/icons/shopping-cart-solid.svg",
     random_thought: "assets/icons/head-side-virus-solid.svg",
@@ -18,4 +20,27 @@ function getCurrentDate() {
     return `${month} ${day}, ${year}`
 }
 
-export { getCategoryIconPath, getCurrentDate }
+const notePopupSubmit = (actionKey, formElement, parentContainer) => (e) => {
+
+    e.preventDefault()
+
+    const formInputs = Array.from(formElement.querySelectorAll("input, select, textarea"));
+
+    const note = {}
+
+    formInputs.forEach(el => {
+        const fieldName = el.getAttribute("field");
+
+        note[fieldName] = el.value;
+    });
+
+    note.created = getCurrentDate();
+    note.archived = false;
+
+    store.dispatch(actionKey, {note})
+
+    parentContainer.className = "add_note__popup__container closed";
+    formInputs.forEach(el => el.value = "");
+}
+
+export { getCategoryIconPath, getCurrentDate, notePopupSubmit }

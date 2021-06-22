@@ -1,3 +1,4 @@
+import {notePopupSubmit} from "../utils.js";
 
 const createNoteButtonTemplate = document.createElement("template");
 createNoteButtonTemplate.innerHTML = `
@@ -8,7 +9,7 @@ createNoteButtonTemplate.innerHTML = `
         </span>
     </button>
      <div class="add_note__popup__container closed">
-        <create-note-popup></create-note-popup>
+        <create-edit-note-popup></create-edit-note-popup>
      </div>
 </div>
 `
@@ -32,9 +33,11 @@ export default class CreateNoteButton extends HTMLElement{
                 shadow.querySelector(".add_note__popup__container").className = "add_note__popup__container"
         })
 
-        /*const icon_delete_all = shadow.querySelector(".icon_delete_all")
-        icon_delete_all.addEventListener("click", ()=>{
-            store.dispatch("deleteAllNotes", {})
-        })*/
+
+        const popupForm = shadow.querySelector("create-edit-note-popup").shadowRoot.querySelector("form");
+        const popupContainer = shadow.querySelector(".add_note__popup__container")
+
+        popupForm.addEventListener("submit", notePopupSubmit("createNote", popupForm, popupContainer))
+
     }
 }

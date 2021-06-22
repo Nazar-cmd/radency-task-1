@@ -24,15 +24,6 @@
       border-color: $primary_gray;
     }
 
-/*    &_input {
-      opacity: 0;
-      position: absolute;
-
-      &:checked ~ .add_note__popup__container {
-        @include show-element($to-show: true);
-      }
-    }*/
-
     &_text {
       font-weight: bold;
       width: 100%;

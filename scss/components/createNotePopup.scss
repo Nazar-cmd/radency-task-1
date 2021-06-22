@@ -35,7 +35,8 @@
       width: 100%;
 
       &_icon {
-        @include draw-square($sm_icon-size)
+        @include draw-square($sm_icon-size);
+        cursor: pointer;
       }
     }
 
@@ -97,6 +98,7 @@
       margin-top: $sm_margin;
       padding: $sm_margin-vertical;
       @include side-border($primary_gray, $sm_border-thickness, bottom);
+      cursor: pointer;
 
       &:active {
         box-shadow: none;

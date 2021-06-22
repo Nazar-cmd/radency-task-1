@@ -27,7 +27,8 @@
 
       .icon {
         margin: 0 $sm_margin;
-        @include draw-square($sm_icon-size)
+        @include draw-square($sm_icon-size);
+        cursor: pointer;
       }
     }
 
@@ -68,7 +69,8 @@
         }
 
         .icon {
-          @include draw-square($md_icon-size)
+          @include draw-square($md_icon-size);
+          cursor: auto;
         }
       }
     }

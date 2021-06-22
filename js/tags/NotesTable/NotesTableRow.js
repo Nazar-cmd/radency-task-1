@@ -47,7 +47,7 @@ export default class NotesTableRow extends HTMLElement{
                 </div>
                 <div class="table__cell">
                     <div class="table__cell_content table__header_content">
-                        <img src="assets/icons/pen-solid.svg" class="icon table__row_icon icon_edit" alt="archive">
+                        <edit-note-button></edit-note-button>
                         <img src="assets/icons/archive-solid.svg" class="icon table__row_icon icon_archive" alt="archive">
                         <img src="assets/icons/trash-solid.svg" class="icon table__row_icon icon_delete" alt="delete">
                     </div>
