@@ -1,0 +1,230 @@
+@charset "UTF-8";
+.note__popup__container {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  right: 0;
+}
+
+.note__popup__container {
+  display: flex;
+  justify-content: center;
+}
+
+.note__popup__container {
+  align-items: center;
+}
+
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+html {
+  font-family: "Montserrat", sans-serif;
+}
+
+.note__popup .popup__input_select .popup__input:valid ~ .popup__label {
+  position: absolute;
+  display: block;
+  transition: 0.2s;
+  top: 0;
+  font-size: 12px;
+  color: #737373;
+}
+
+.note__popup {
+  box-shadow: 0 0 5px 0 #fff;
+  border-radius: 5px;
+  background-color: #CDECFD;
+  width: 350px;
+  height: 343px;
+  padding: 0.75rem;
+  margin: 1rem;
+}
+.note__popup__container {
+  visibility: visible;
+  overflow: visible;
+  max-height: 100%;
+  z-index: 2;
+  background: rgba(60, 60, 60, 0.4);
+}
+.note__popup__container.closed {
+  overflow: hidden;
+  visibility: hidden;
+  max-height: 0;
+}
+.note__popup__exit {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.note__popup__exit_icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.note__popup .popup__group {
+  position: relative;
+  padding-top: 0.75rem;
+  margin-top: 4px;
+}
+.note__popup .popup__input {
+  border: 0;
+  border-bottom: 1px solid #b5a3a3;
+  width: 100%;
+  outline: 0;
+  font-size: 16px;
+  padding: 10px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.note__popup .popup__input_textarea {
+  resize: none;
+  margin-top: 0.5rem;
+}
+.note__popup .popup__input::placeholder {
+  color: transparent;
+}
+.note__popup .popup__input:placeholder-shown ~ .popup__label {
+  font-size: 16px;
+  cursor: text;
+  top: 20px;
+}
+.note__popup .popup__input:focus {
+  border-bottom: 2px solid #3687B3;
+}
+.note__popup .popup__input ~ .popup__label, .note__popup .popup__input:focus ~ .popup__label {
+  position: absolute;
+  display: block;
+  transition: 0.2s;
+  top: 0;
+  font-size: 12px;
+  color: #737373;
+}
+.note__popup .popup__input:focus ~ .popup__label {
+  color: #3687B3 !important;
+}
+.note__popup .popup__button {
+  transition: box-shadow 0.2s ease;
+  background-color: transparent;
+  width: 100%;
+  border: 0;
+  box-shadow: 0 4px 6px -6px #222;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #b5a3a3;
+  cursor: pointer;
+}
+.note__popup .popup__button:active {
+  box-shadow: none;
+}
+.note__popup .popup__input_select .popup__input_variant {
+  background-color: #FFD299;
+}
+.note__popup .popup__input_select:focus > .popup__input_variant:checked {
+  background: #000 !important;
+}
+.note__popup .popup__input_select .popup__label {
+  color: #737373;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  top: 18px;
+  transition: 0.2s ease all;
+}
+.note__popup .popup__input_select.popup__group .popup__input {
+  appearance: none;
+  -webkit-appearance: none;
+}
+.note__popup .popup__input_select.popup__group:after {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: "";
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #b5a3a3;
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=createNotePopup.css.map */

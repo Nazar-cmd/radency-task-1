@@ -81,33 +81,13 @@ html {
   font-family: "Montserrat", sans-serif;
 }
 
-html {
-  min-height: 100vh;
+.edit_note__button {
+  margin: 0 0.5rem;
+  width: 20px;
+  height: 20px;
+}
+.edit_note__button .icon {
+  cursor: pointer;
 }
 
-body {
-  background: #FFD299;
-  min-height: 100vh;
-}
-
-body {
-  padding: 0.75rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.page__container {
-  box-shadow: 0 0 5px 0 #000;
-  padding: 0.75rem;
-  background-color: #CDECFD;
-  flex: 1;
-}
-.page__container .error {
-  text-align: center;
-  color: red;
-}
-.page__container .table__container {
-  margin: 1rem 0 2.5rem;
-}
-
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=editNoteButton.css.map */

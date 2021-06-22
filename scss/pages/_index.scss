@@ -2,13 +2,15 @@
 
 body {
   padding: $md_padding;
+  display: flex;
+  flex-direction: column;
 }
 
 .page__container {
   @include even-shadow;
   padding: $md_padding;
-  height: 100%;
   background-color: $secondary_blue;
+  flex: 1;
 
   .error {
     text-align: center;

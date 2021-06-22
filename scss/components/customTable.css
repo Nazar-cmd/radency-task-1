@@ -1,4 +1,9 @@
 @charset "UTF-8";
+.table {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 /* Указываем box sizing */
 *,
 *::before,
@@ -81,33 +86,87 @@ html {
   font-family: "Montserrat", sans-serif;
 }
 
-html {
-  min-height: 100vh;
+.table {
+  height: 350px;
+  max-height: 100%;
+  padding: 0 0.5rem;
 }
-
-body {
-  background: #FFD299;
-  min-height: 100vh;
-}
-
-body {
+.table__cell {
+  min-width: 100px;
+  align-items: center;
   padding: 0.75rem;
   display: flex;
-  flex-direction: column;
-}
-
-.page__container {
-  box-shadow: 0 0 5px 0 #000;
-  padding: 0.75rem;
-  background-color: #CDECFD;
   flex: 1;
 }
-.page__container .error {
-  text-align: center;
-  color: red;
+.table__cell:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
-.page__container .table__container {
-  margin: 1rem 0 2.5rem;
+.table__cell:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.table__cell_content {
+  display: flex;
+  min-width: 100%;
+}
+.table__cell_content .icon {
+  margin: 0 0.5rem;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.table__cell_text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.table__row {
+  position: relative;
+  display: flex;
+  margin-top: 1rem;
+  min-width: 100%;
+}
+.table__row.archived .table__cell {
+  background-color: #d0c9c9;
+}
+.table__row_content {
+  color: #737373;
+}
+.table__row_content .table__cell {
+  background-color: #FFD299;
+}
+.table__row_content .table__cell_name {
+  align-items: center;
+  color: #000000;
+}
+.table__row_content .table__cell_name .cell__text {
+  margin-left: 0.5rem;
+}
+.table__row_content .table__cell_name .icon {
+  width: 35px;
+  height: 35px;
+  cursor: auto;
+}
+.table__header_container {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.table__header {
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 0;
+}
+.table__header_content {
+  width: 100%;
+  justify-content: flex-end;
+}
+.table__header .table__cell {
+  background-color: #ffbb73;
+}
+.table__header .table__cell:first-of-type {
+  justify-content: center;
 }
 
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=customTable.css.map */
